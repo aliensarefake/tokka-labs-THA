@@ -1,0 +1,11 @@
+html, body {
+  background-color: var(--bg-1);
+}
+
+.App {
+  font-family: "Questrial";
+  font-weight: 400;
+  font-size: var(--font-size-xxl);
+  font-style: normal;
+  color: var(--text-primary);
+}

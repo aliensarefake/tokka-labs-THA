@@ -1,0 +1,18 @@
+:root {
+    /* Colors */
+    --bg-1: rgba(36,36,36,1.00);
+    --text-primary: rgb(255, 255, 255);
+    --text-secondary: rgb(155, 155, 155);
+  
+    /* Font Sizes */
+    --font-size-s: 12px;
+    --font-size-m: 16px;
+    --font-size-l: 24px;
+    --font-size-xl: 32px;
+    --font-size-xxl: 60px;
+  
+    /* Spacing */
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 32px;
+  }
