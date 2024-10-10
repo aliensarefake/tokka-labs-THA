@@ -6,10 +6,11 @@
   
     /* Font Sizes */
     --font-size-s: 12px;
-    --font-size-m: 16px;
+    --font-size-m: 18px;
     --font-size-l: 24px;
     --font-size-xl: 32px;
-    --font-size-xxl: 60px;
+    --font-size-xxl: 66px;
+    --font-size-xxxl: 80px;
   
     /* Spacing */
     --spacing-small: 8px;
