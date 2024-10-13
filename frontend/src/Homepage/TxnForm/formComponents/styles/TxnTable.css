@@ -3,7 +3,7 @@
     border-collapse: collapse;
     color: white;
     background-color: #141414;
-    margin-top: var(--spacing-large);
+    margin-top: var(--spacing-medium);
     font-size: var(--font-size-m);
     border-radius: 20px; 
     overflow: hidden; 
