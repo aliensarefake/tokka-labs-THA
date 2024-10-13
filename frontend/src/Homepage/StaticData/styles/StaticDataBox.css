@@ -6,13 +6,17 @@
     border-radius: 30px;
 }
 
+.static-data-box-main:hover {
+    box-shadow: 0 0 20px 5px var(--neon-color); 
+}
+
 .static-title-wrapper{
     font-size: var(--font-size-m);
     margin-bottom: 36px;
 }
 
 .static-title{
-    background-color: #131313;
+    background-color: var(--bg-2);
     padding: 8px 12px;
     border-radius: 20px;
 }
