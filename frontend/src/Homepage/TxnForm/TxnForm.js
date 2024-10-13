@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './TxnForm.css';
 import TxnTable from './formComponents/TxnTable';
 import Pagination from './formComponents/Pagination';
@@ -35,6 +35,12 @@ const TxnForm = ({ transactions }) => {
         }
         setCurrentPage(1); 
     };
+
+    useEffect(() => {
+        if (filteredTransactions.length === 0) {
+            setCurrentPage(0);
+        }
+    }, [filteredTransactions]);
 
 
     return (
