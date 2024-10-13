@@ -39,6 +39,8 @@
     cursor: text;
     min-width: 200px;
     margin-right: 10px;
+    outline: none;
+    border: 1px solid transparent;
   }
   
   .time-range-inputs input {

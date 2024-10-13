@@ -34,14 +34,13 @@ const Searchbar = ({ onSearch }) => {
             <div className='second-row'>
                 {searchMode === 'txId' ? (
                     <div className="search-input">
-                        <div 
+                        <input
+                            type="text"
                             className="custom-input"
-                            contentEditable
                             placeholder="Enter TxId"
-                            onInput={(e) => setSearchQuery(e.target.textContent)}
-                        >
-                            {searchQuery}
-                        </div>
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
                     </div>
                 ) : (
                     <div className="time-range-inputs">
