@@ -1,9 +1,9 @@
 const Web3 = require('web3');
-const Transaction = require('../models/Transaction');
-const Statistics = require('../models/Statistics');
-const priceService = require('./priceService');
+const Transaction = require('../models/Transaction.js');
+const Statistics = require('../models/Statistics.js');
+const priceService = require('./priceService.js');
 const config = require('config');
-const helpers = require('../utils/helpers');
+const helpers = require('../utils/helpers.js');
 
 const alchemyApiKey = config.get('ALCHEMY_API_KEY');
 const uniswapPoolAddress = config.get('UNISWAP_POOL_ADDRESS');
