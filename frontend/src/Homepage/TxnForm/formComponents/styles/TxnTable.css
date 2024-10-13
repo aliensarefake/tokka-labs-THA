@@ -1,0 +1,29 @@
+.txn-table {
+    width: 90%;
+    border-collapse: collapse;
+    color: white;
+    background-color: #141414;
+    margin-top: var(--spacing-large);
+    font-size: var(--font-size-m);
+    border-radius: 20px; 
+    overflow: hidden; 
+    border-width: 6px;
+    border-color: #fff;
+    border-style: solid;
+  }
+  
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+  }
+  
+  th {
+    background-color: #1E1E1E;
+    color: #ccc;
+    height: 40px; 
+  }
+  
+  tr:nth-child(even) {
+    background-color: #1A1A1A;
+  }
