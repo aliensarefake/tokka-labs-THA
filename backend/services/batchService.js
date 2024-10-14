@@ -19,15 +19,17 @@ exports.fetchAndStoreTransactions = async (startTime, endTime) => {
 
   // Fetch transactions from Etherscan API
   const transactions = await fetchTransactionsFromEtherscan(startBlock, endBlock);
+  console.log('transactions', transactions);
 
   // Process and store transactions
   const processedTransactions = await processTransactions(transactions);
+  console.log('processedTransactions', processedTransactions)
 
   return processedTransactions;
 };
 
 async function fetchTransactionsFromEtherscan(startBlock, endBlock) {
-  const url = `https://api.etherscan.io/api?module=account&action=txlist&address=${uniswapPoolAddress}&startblock=${startBlock}&endblock=${endBlock}&sort=asc&apikey=${etherscanApiKey}`;
+  const url = `https://api.etherscan.io/api?module=account&action=tokentx&address=${uniswapPoolAddress}&startblock=${startBlock}&endblock=${endBlock}&sort=asc&apikey=${etherscanApiKey}`;
 
   const response = await axios.get(url);
   if (response.data.status !== '1') {
@@ -38,6 +40,7 @@ async function fetchTransactionsFromEtherscan(startBlock, endBlock) {
 
 async function processTransactions(transactions) {
   const ethPrice = await priceService.getCurrentETHUSDTPrice();
+  console.log('ethPrice', ethPrice)
   const processedTransactions = [];
   let totalTxFeeETH = 0;
   let totalTxFeeUSDT = 0;
@@ -58,6 +61,7 @@ async function processTransactions(transactions) {
       });
 
       await transaction.save();
+      console.log('transaction saved');
       processedTransactions.push(transaction);
 
       totalTxFeeETH += txFeeETH;
@@ -67,6 +71,7 @@ async function processTransactions(transactions) {
 
   // Update total transaction fees in statistics
   await updateStatistics(totalTxFeeETH, totalTxFeeUSDT);
+  console.log('statistics saved');
 
   return processedTransactions;
 }
