@@ -2,7 +2,7 @@ import axios from 'axios';
 
 let currentEndTime = new Date();
 const batchInterval = 60 * 60 * 1000;
-const pollingInterval = 3 * 60 * 1000; 
+const pollingInterval = 1.5 * 60 * 1000; 
 
 const processBatch = async () => {
   const currentStartTime = new Date(currentEndTime.getTime() - batchInterval);
