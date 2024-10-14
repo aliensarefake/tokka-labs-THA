@@ -3,11 +3,12 @@ import './TxnForm.css';
 import TxnTable from './formComponents/TxnTable';
 import Pagination from './formComponents/Pagination';
 import Searchbar from './formComponents/Searchbar';
+import PageControl from './formComponents/PageControl';
 
 const TxnForm = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [filteredTransactions, setFilteredTransactions] = useState([]);
-    const pageSize = 50;
+    const [pageSize, setPageSize] = useState(50);
 
     const totalTransactions = filteredTransactions.length;
     const totalPages = Math.ceil(totalTransactions / pageSize);
@@ -66,11 +67,14 @@ const TxnForm = () => {
                 setFilteredTransactions={setFilteredTransactions}
             />
             <TxnTable transactions={currentTransactions}/>
-            <Pagination 
-                currentPage={currentPage} 
-                totalPages={totalPages} 
-                onPageChange={handlePageChange} 
-            />
+            <div className='last-row'>
+                <PageControl setPageSize={setPageSize}/>
+                <Pagination 
+                    currentPage={currentPage} 
+                    totalPages={totalPages} 
+                    onPageChange={handlePageChange} 
+                />
+            </div>
         </div>
     );
 };
