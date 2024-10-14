@@ -47,7 +47,7 @@ async function processTransactions(transactions) {
 
   for (const tx of transactions) {
     const txExists = await Transaction.findOne({ txHash: tx.hash });
-    if (!txExists) {
+    if (!txExists) { // ensure no duplicates are saved
       const txFeeETH = helpers.calculateTransactionFeeETH(tx.gasUsed, tx.gasPrice);
       const txFeeUSDT = txFeeETH * ethPrice;
 
