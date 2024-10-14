@@ -32,7 +32,8 @@ This project tracks transaction fees in USDT and ETH for all Uniswap WETH-USDC t
 {
   "mongoURI": "your_mongodb_connection_string",
   "etherscanApiKey": "your_etherscan_api_key",
-  "infuraProjectId": "your_infura_project_id"
+  "infuraProjectId": "your_infura_project_id",
+  "UNISWAP_POOL_ADDRESS": "0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640"
 }
 ```
 4. Start the backend server:
