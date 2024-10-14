@@ -7,3 +7,15 @@
 .header-text{
     font-size: var(--font-size-xxxl);
 }
+
+@media (max-width: 1000px) {
+    .header-text {
+      font-size: var(--font-size-xxl);
+    }
+  }
+
+  @media (max-width: 420px) {
+    .header-text {
+      font-size: 40px;
+    }
+  }

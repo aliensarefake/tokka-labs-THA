@@ -25,3 +25,17 @@
     font-size: var(--font-size-xxl);
     text-align: center;
 }
+
+@media (max-width: 900px) {
+    .static-data-box-main{
+        height: 100px;
+        width: 250px;
+    }
+    .static-title-wrapper{
+        font-size: 12px;
+        margin-bottom: 24px;
+    }
+    .static-value{
+        font-size: 50px;
+    }
+}

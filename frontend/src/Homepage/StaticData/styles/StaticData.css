@@ -2,3 +2,11 @@
     display: flex;
     justify-content: center;
 }
+
+@media (max-width: 900px) {
+    .static-data-wrapper{
+        flex-direction: column; 
+        gap: 20px; 
+        align-items: center;
+    }
+}
