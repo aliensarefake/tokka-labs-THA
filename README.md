@@ -4,8 +4,8 @@
 This project tracks transaction fees in USDT and ETH for all Uniswap WETH-USDC transactions. It supports both real-time data recording and historical batch processing. The application consists of a backend built with Express.js and a frontend built with React.js.
 
 ## Project Structure
-/backend    # Backend (Express.js)
-/frontend   # Frontend (React.js)
+/backend (Express.js)
+/frontend (React.js)
 
 ## Prerequisites
 - Node.js 
