@@ -27,3 +27,9 @@
   tr:nth-child(even) {
     background-color: #1A1A1A;
   }
+
+  td.empty-body{
+    font-size: var(--font-size-l);
+    text-align: center; 
+    padding: 50px;
+  }

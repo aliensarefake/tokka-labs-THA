@@ -44,7 +44,7 @@ const TxnForm = () => {
                     throw new Error('Error fetching transactions');
                 }
                 const transactions = await response.json();
-                setFilteredTransactions(transactions); 
+                setFilteredTransactions(transactions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))); 
             } catch (error) {
                 console.error('Error fetching transactions:', error);
             }

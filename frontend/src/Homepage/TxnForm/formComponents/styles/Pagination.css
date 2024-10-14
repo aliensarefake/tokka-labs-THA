@@ -2,6 +2,7 @@
     font-size: 14px;
     display: flex;
     margin-top: 12px;
+    margin-bottom: var(--spacing-large);
     width: 90%;
     justify-content: end;
 }
