@@ -1,13 +1,16 @@
 import React from 'react';
 
+import { CAShortner } from '../../../utils/CAShortener';
+import { formatValue } from '../../../utils/formatValue';
+
 const TxnFormRow = ({ txn }) => {
     return (
         <tr>
-            <td>{txn.txHash}</td>
-            <td>{txn.from}</td>
-            <td>{txn.to}</td>
-            <td>{txn.txnFeeUSDT}</td>
-            <td>{txn.txnFeeETH}</td>
+            <td>{CAShortner(txn.txHash)}</td>
+            <td>{CAShortner(txn.fromAddress)}</td>
+            <td>{CAShortner(txn.toAddress)}</td>
+            <td>{formatValue(txn.txFeeUSDT)}</td>
+            <td>{formatValue(txn.txFeeETH)}</td>
             <td>{txn.timestamp}</td>
         </tr>
     );
