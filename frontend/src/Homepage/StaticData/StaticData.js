@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './styles/StaticData.css';
 import StaticDataBox from './StaticDataBox';
 
+import { formatValue } from '../../utils/formatValue';
+
 function StaticData() {
   const [metricsDict, setMetricsDict] = useState({
     entry1: { color: 'rgb(252, 114, 255)', bgColor: 'rgba(252, 114, 255, 0.4)', title: 'Total Transaction Fee (USDT)', value: '0' }, 
@@ -25,15 +27,15 @@ function StaticData() {
           ...prevMetrics,
           entry1: { 
             ...prevMetrics.entry1,
-            value: statisticsData.totalTxFeeUSDT,
+            value: formatValue(Number(statisticsData.totalTxFeeUSDT)),
           },
           entry2: { 
             ...prevMetrics.entry2,
-            value: statisticsData.totalTxFeeETH, 
+            value: formatValue(Number(statisticsData.totalTxFeeETH)), 
           },
           entry3: { 
             ...prevMetrics.entry3,
-            value: priceData.price,
+            value: formatValue(Number(priceData.price)),
           },
         }));
       } catch (error) {
