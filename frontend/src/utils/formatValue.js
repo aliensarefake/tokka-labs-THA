@@ -1,4 +1,4 @@
-export const formatValue = (num) => {
+export const formatValue = (num, dp = 2) => {
   if (num === null || num === undefined || isNaN(num)) {
     return 'N/A'; 
   }
@@ -23,7 +23,7 @@ export const formatValue = (num) => {
     formattedValue = num;
   }
 
-  formattedValue = parseFloat(formattedValue).toFixed(2);
+  formattedValue = parseFloat(formattedValue).toFixed(dp);
 
   return formattedValue + suffix;
 };

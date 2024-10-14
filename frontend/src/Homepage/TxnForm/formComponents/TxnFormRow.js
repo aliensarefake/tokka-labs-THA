@@ -10,7 +10,7 @@ const TxnFormRow = ({ txn }) => {
             <td>{CAShortner(txn.fromAddress)}</td>
             <td>{CAShortner(txn.toAddress)}</td>
             <td>{formatValue(txn.txFeeUSDT)}</td>
-            <td>{formatValue(txn.txFeeETH)}</td>
+            <td>{formatValue(txn.txFeeETH, 6)}</td>
             <td>{txn.timestamp}</td>
         </tr>
     );
