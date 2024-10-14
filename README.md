@@ -37,7 +37,7 @@ This project tracks transaction fees in USDT and ETH for all Uniswap WETH-USDC t
 }
 ```
 4. Start the backend server:
-``` npm start ```
+``` node app.js ```
 
 ### 2. Frontend Setup
 1. Navigate to the frontend repository:
