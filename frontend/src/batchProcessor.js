@@ -23,8 +23,7 @@ const processBatch = async () => {
 };
 
 export const startBatchPolling = () => {
-    console.log("NINNN")
-  processBatch();
+    processBatch();
 
-  setInterval(processBatch, pollingInterval);
+    setInterval(processBatch, pollingInterval);
 };
