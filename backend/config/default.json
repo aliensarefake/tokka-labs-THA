@@ -1,5 +1,5 @@
 {
-    "MONGO_URI": "  mongodb+srv://guoxiaoyu2003429:KJbEW7BJwywNj5p8@cluster0.osts8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+    "MONGO_URI": "mongodb+srv://guoxiaoyu2003429:KJbEW7BJwywNj5p8@cluster0.osts8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
     "ETHERSCAN_API_KEY": "DAR3ZPKZ74MGQRKRIHK3SZZMRR45612IYU",
     "ALCHEMY_API_KEY": "ino95vhIAWmSTWlqbNY1ZUNFfZXTzG4f",
     "UNISWAP_POOL_ADDRESS": "0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640"
