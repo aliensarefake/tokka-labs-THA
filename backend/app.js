@@ -12,6 +12,7 @@ app.use(express.json());
 // Routes
 app.use('/batch', require('./routes/batch.js'));
 app.use('/transactions', require('./routes/transaction.js'));
+app.use('/statistics', require('./routes/statistics.js')); 
 
 mongoose.connect(config.get('MONGO_URI'))
   .then(() => {
