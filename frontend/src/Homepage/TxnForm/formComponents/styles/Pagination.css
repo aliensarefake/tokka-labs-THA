@@ -36,3 +36,9 @@
     background-color: #222;
     transform: scale(0.98);
   }
+
+  @media (max-width: 600px) {
+    .currPage{
+      font-size: 12px;
+    }
+}
