@@ -24,15 +24,12 @@ const uniswapAbi = [
 ];
 
 exports.startLiveTransactionListener = async () => {
-    // Connect to the Uniswap pool contract
     const contract = new ethers.Contract(uniswapPoolAddress, uniswapAbi, provider);
   
-    // Listen for Swap events emitted by the Uniswap contract
     contract.on('Swap', async (...args) => {
-      const event = args[args.length - 1]; // Extract the event object
+      const event = args[args.length - 1]; 
       console.log('Swap event received:', event);
   
-      // Process the transaction event
       await processTransaction(event);
     });
 };
@@ -41,12 +38,20 @@ async function processTransaction(event) {
   try {
     const ethPrice = await priceService.getCurrentETHUSDTPrice();
 
-    const txHash = event.transactionHash;
+    const txHash = event.log.transactionHash;
+    if (!txHash) {
+        throw new Error('Transaction hash is undefined.');
+      }
+
     const txExists = await Transaction.findOne({ txHash });
     if (txExists) return; // skip if alrd processed
 
-    const txReceipt = await web3.eth.getTransactionReceipt(txHash);
-    const tx = await web3.eth.getTransaction(txHash);
+    const txReceipt = await provider.getTransactionReceipt(txHash);
+    const tx = await provider.getTransaction(txHash);
+
+    if (!tx || !txReceipt) {
+        throw new Error(`Transaction or receipt not found for hash: ${txHash}`);
+      }
 
     const txFeeETH = helpers.calculateTransactionFeeETH(txReceipt.gasUsed, tx.gasPrice);
     const txFeeUSDT = txFeeETH * ethPrice;
