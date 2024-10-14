@@ -1,3 +1,4 @@
+const { ethers } = require('ethers');
 const { Web3 } = require('web3');
 const Transaction = require('../models/Transaction.js');
 const Statistics = require('../models/Statistics.js');
@@ -7,6 +8,7 @@ const helpers = require('../utils/helpers.js');
 
 const infuraProjectId = config.get('INFURA_API_KEY');
 const uniswapPoolAddress = config.get('UNISWAP_POOL_ADDRESS');
+
 const web3 = new Web3(`wss://mainnet.infura.io/ws/v3/${infuraProjectId}`, {
     reconnect: {
         auto: true,
@@ -15,46 +17,23 @@ const web3 = new Web3(`wss://mainnet.infura.io/ws/v3/${infuraProjectId}`, {
         onTimeout: false
     }
 });
+const provider = new ethers.WebSocketProvider(`wss://mainnet.infura.io/ws/v3/${infuraProjectId}`);
 
 const uniswapAbi = [
-    {
-      "anonymous": false,
-      "inputs": [
-        { "indexed": true, "name": "sender", "type": "address" },
-        { "indexed": false, "name": "recipient", "type": "address" },
-        { "indexed": false, "name": "amount0", "type": "int256" },
-        { "indexed": false, "name": "amount1", "type": "int256" },
-        { "indexed": false, "name": "sqrtPriceX96", "type": "uint160" },
-        { "indexed": false, "name": "liquidity", "type": "uint128" },
-        { "indexed": false, "name": "tick", "type": "int24" }
-      ],
-      "name": "Swap",
-      "type": "event"
-    }
-  ];
+  'event Swap(address indexed sender, address indexed recipient, int256 amount0, int256 amount1, uint160 sqrtPriceX96, uint128 liquidity, int24 tick)'
+];
 
 exports.startLiveTransactionListener = async () => {
-    const contract = new web3.eth.Contract(uniswapAbi, uniswapPoolAddress);
-
-    web3.currentProvider.on('connect', () => {
-        console.log('WebSocket connection established.');
-    });
-
-    web3.currentProvider.on('error', (error) => {
-        console.error('WebSocket connection error:', error);
-    });
-
-    web3.currentProvider.on('close', (event) => {
-        console.log('WebSocket connection closed:', event);
-    });
-
-    contract.events.Swap({ fromBlock: 'latest' }, async (error, event) => {
-        if (error) {
-            console.error('Error in Swap event subscription:', error);
-            return;
-        }
-        console.log('Swap event received:', event);
-        await processTransaction(event);
+    // Connect to the Uniswap pool contract
+    const contract = new ethers.Contract(uniswapPoolAddress, uniswapAbi, provider);
+  
+    // Listen for Swap events emitted by the Uniswap contract
+    contract.on('Swap', async (...args) => {
+      const event = args[args.length - 1]; // Extract the event object
+      console.log('Swap event received:', event);
+  
+      // Process the transaction event
+      await processTransaction(event);
     });
 };
 
