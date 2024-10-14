@@ -15,9 +15,9 @@ This project tracks transaction fees in USDT and ETH for all Uniswap WETH-USDC t
 
 ## Installations
 ### 1. Backend Setup
-1. Navigate to the backend repository
+1. Navigate to the backend repository:
 ``` cd backend ```
-2. Install the dependencies
+2. Install the dependencies:
 ``` npm install ```
 3. Create a config folder with a default.json file:
 ```
@@ -35,16 +35,25 @@ This project tracks transaction fees in USDT and ETH for all Uniswap WETH-USDC t
   "infuraProjectId": "your_infura_project_id"
 }
 ```
-4. Start the backend server
+4. Start the backend server:
 ``` npm start ```
 
 ### 2. Frontend Setup
-1. Navigate to the frontend repository
+1. Navigate to the frontend repository:
 ``` cd frontend ```
-2. Install the dependencies
+2. Install the dependencies:
 ``` npm install ```
 
 
 ## Running the Application
 Backend runs on http://localhost:4100.
 Frontend runs on http://localhost:3000.
+
+## Testing
+1. Navigate to the backend directory:
+``` cd backend ```
+2. Run tests:
+``` npm test ```
+
+## Link to API endpoints
+http://localhost:4100/api-docs/
