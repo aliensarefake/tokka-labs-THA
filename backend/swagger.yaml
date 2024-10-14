@@ -1,0 +1,206 @@
+openapi: 3.0.0
+info:
+  title: Uniswap WETH-USDC Transaction Fee API
+  version: 1.0.0
+servers:
+  - url: http://localhost:4100
+paths:
+  /batch:
+    post:
+      summary: Process batch transactions
+      description: Processes and stores transactions within a given time range.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                startTime:
+                  type: string
+                  format: date-time
+                  description: Start time.
+                endTime:
+                  type: string
+                  format: date-time
+                  description: End time.
+              required:
+                - startTime
+                - endTime
+      responses:
+        '200':
+          description: Batch processing completed successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Batch processing completed
+                  transactions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Transaction'
+        '500':
+          description: Batch processing failed.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Batch processing failed
+  /statistics:
+    get:
+      summary: Get transaction fee statistics
+      description: Retrieves total transaction fees in USDT and ETH.
+      responses:
+        '200':
+          description: Statistics retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalTxFeeUSDT:
+                    type: number
+                    format: float
+                    example: 12345.67
+                  totalTxFeeETH:
+                    type: number
+                    format: float
+                    example: 3.21
+        '404':
+          description: Statistics not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Statistics not found
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Server error
+                  error:
+                    type: string
+                    example: Detailed error message
+  /transactions/{txHash}:
+    get:
+      summary: Get transaction by hash
+      description: Retrieves transaction details for a given transaction hash.
+      parameters:
+        - name: txHash
+          in: path
+          required: true
+          schema:
+            type: string
+            example: 0x123abc...
+          description: Transaction hash.
+      responses:
+        '200':
+          description: Transaction retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        '404':
+          description: Transaction not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Transaction not found
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
+  /transactions:
+    get:
+      summary: Get transactions by time range
+      description: Retrieves transactions within a specified time range.
+      parameters:
+        - name: startTime
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+          description: Start time in ISO 8601 format (e.g., 2021-09-01T00:00:00Z).
+        - name: endTime
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+          description: End time in ISO 8601 format (e.g., 2021-09-30T23:59:59Z).
+      responses:
+        '200':
+          description: Transactions retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transaction'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
+components:
+  schemas:
+    Transaction:
+      type: object
+      properties:
+        txHash:
+          type: string
+          description: Transaction hash.
+          example: 0x123abc...
+        fromAddress:
+          type: string
+          description: Sender's address.
+          example: 0xabc123...
+        toAddress:
+          type: string
+          description: Recipient's address.
+          example: 0xdef456...
+        txFeeETH:
+          type: number
+          format: float
+          description: Transaction fee in ETH.
+          example: 0.005
+        txFeeUSDT:
+          type: number
+          format: float
+          description: Transaction fee in USDT.
+          example: 15.75
+        timestamp:
+          type: string
+          format: date-time
+          description: Transaction timestamp.
+          example: 2021-09-15T12:34:56Z
