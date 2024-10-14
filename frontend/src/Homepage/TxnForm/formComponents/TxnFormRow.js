@@ -5,9 +5,18 @@ import { CAShortner } from '../../../utils/CAShortener';
 import { formatValue } from '../../../utils/formatValue';
 
 const TxnFormRow = ({ txn }) => {
+    const handleTxHashClick = (txHash) => {
+        const url = `https://etherscan.io/tx/${txHash}`;
+        window.open(url, '_blank'); 
+    };
     return (
         <tr className='form-row'>
-            <td>{CAShortner(txn.txHash)}</td>
+            <td
+            className="tx-hash"
+            onClick={() => handleTxHashClick(txn.txHash)}
+            >
+                {CAShortner(txn.txHash)}
+            </td>
             <td>{CAShortner(txn.fromAddress)}</td>
             <td>{CAShortner(txn.toAddress)}</td>
             <td>{formatValue(txn.txFeeUSDT)}</td>
