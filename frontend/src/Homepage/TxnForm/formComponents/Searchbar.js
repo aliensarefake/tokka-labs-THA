@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./styles/Searchbar.css"
 
-const Searchbar = ({ onSearch }) => {
+const Searchbar = ({ onSearch, setFilteredTransactions }) => {
     const [searchMode, setSearchMode] = useState('txId'); // 'txId' or 'timeRange'
     const [searchQuery, setSearchQuery] = useState('');
     const [startTime, setStartTime] = useState('');
@@ -14,6 +14,10 @@ const Searchbar = ({ onSearch }) => {
             onSearch({ type: 'timeRange', start: startTime, end: endTime });
         }
     };
+
+    useEffect(() => {
+        setFilteredTransactions([]);
+      }, [searchMode]); 
 
     return (
         <div className="search-bar-container">
