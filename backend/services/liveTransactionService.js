@@ -1,4 +1,4 @@
-const Web3 = require('web3');
+const { Web3 } = require('web3');
 const Transaction = require('../models/Transaction.js');
 const Statistics = require('../models/Statistics.js');
 const priceService = require('./priceService.js');

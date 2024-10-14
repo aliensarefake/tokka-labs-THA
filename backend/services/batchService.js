@@ -2,7 +2,7 @@ const axios = require('axios');
 const Transaction = require('../models/Transaction.js');
 const Statistics = require('../models/Statistics.js');
 const priceService = require('./priceService.js');
-const config = require('config.js');
+const config = require('config');
 const helpers = require('../utils/helpers.js');
 
 const etherscanApiKey = config.get('ETHERSCAN_API_KEY');
