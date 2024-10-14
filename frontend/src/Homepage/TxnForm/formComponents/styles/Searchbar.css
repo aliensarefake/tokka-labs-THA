@@ -67,3 +67,26 @@
     display: flex;
     flex-direction: row;
   }
+
+  @media (max-width: 750px) {
+    .time-range-inputs input {
+      width: 120px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .second-row{
+      display: flex;
+      flex-direction: column;
+    }
+
+    .search-button{
+      margin-right: 10px;
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+    }
+    .search-bar-container{
+      align-items: center;
+    }
+  }
