@@ -1,11 +1,12 @@
 import React from 'react';
+import './styles/TxnFormRow.css'
 
 import { CAShortner } from '../../../utils/CAShortener';
 import { formatValue } from '../../../utils/formatValue';
 
 const TxnFormRow = ({ txn }) => {
     return (
-        <tr>
+        <tr className='form-row'>
             <td>{CAShortner(txn.txHash)}</td>
             <td>{CAShortner(txn.fromAddress)}</td>
             <td>{CAShortner(txn.toAddress)}</td>

@@ -1,8 +1,9 @@
 import React from 'react';
+import './styles/TxnFormHeader.css'
 
 const TxnFormHeader = () => {
   return (
-    <tr>
+    <tr className='form-header'>
       <th>Transaction Hash</th>
       <th>From Address</th>
       <th>To Address</th>
