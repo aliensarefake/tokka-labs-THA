@@ -30,3 +30,5 @@ mongoose.connect(config.get('MONGO_URI'))
 
 const PORT = process.env.PORT || 4100;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+const newKey = 'newValue';
